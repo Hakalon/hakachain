@@ -1,0 +1,6 @@
+=============== Jun 10, 2018 (CST) ===============
+14:01:26.142265 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+14:01:26.165548 db@open opening
+14:01:26.175539 version@stat F·[] S·0B[] Sc·[]
+14:01:26.184515 db@janitor F·2 G·0
+14:01:26.185516 db@open done T·19.968ms

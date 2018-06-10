@@ -135,7 +135,9 @@ Which file to save the genesis into? (default = hakachain.json)
 >
 ```
 
-Ok, now you are done, press Ctrl + C to leave puppeth.
+The genesis block file(hakachain.json) will be created at your current working directory.
+
+Now you are done, press Ctrl + C to leave puppeth.
 
 ## 
 
