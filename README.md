@@ -139,7 +139,49 @@ The genesis block file(hakachain.json) will be created at your current working d
 
 Now you are done, press Ctrl + C to leave puppeth.
 
-## 
+## Initialize nodes
+
+use command below to initialize each node.
+
+```=bash
+// Be notice your current working directory
+geth --datadir node1/data init hakachain.json
+geth --datadir node2/data init hakachain.json
+geth --datadir miner1/data init hakachain.json
+geth --datadir miner2/data init hakachain.json
+```
+
+## Open node console by Geth
+
+use command below to start the console of each node.
+
+```=bash
+geth --datadir ./data/node1 --networkid 111 --port 2000 console  
+geth --datadir ./data/node2 --networkid 111 --port 2001 console  
+geth --datadir ./data/miner1 --networkid 111 --port 2000 console  
+geth --datadir ./data/miner2 --networkid 111 --port 2000 console
+
+//if you are using windows like me, you sholud put --ipcdisable in command when you open more than 2 console the same time.
+
+// geth --ipcdisable --datadir ./data/node2 --networkid 111 --port 2001 console
+
+```
+
+More detail about IPC problem, please check [here](https://github.com/ethereum/go-ethereum/issues/1714)
+
+## Adding peers to node
+
+Now we can start 4 node in the same private chain, but we need them to be connected with each other.
+
+Use below command in node2, miner1 and miner2 console to add node1 as peer.
+
+```=bash
+// The formation is " enode:// [ID] @ [IP] : [port] "
+// Use "admin.nodeInfo" to find node's ID
+admin.addPeer("enode://36f004ed99bcfcf0836afd734f2565a0daeb955ead2ffbbaced559410e99d205b90110ba883c127e2c15e2879adb9fa1b80a7f520e1e5f4e31be520fed7bf328@127.0.0.1:2000")
+```
+
+Now we can use **admin.peers** in node1 console to check peers list.
 
 [link](https://google.com)  
 
