@@ -1,4 +1,0 @@
-
-eth.getBlock(0)
-admin.addPeer("enode://36f004ed99bcfcf0836afd734f2565a0daeb955ead2ffbbaced559410e99d205b90110ba883c127e2c15e2879adb9fa1b80a7f520e1e5f4e31be520fed7bf328@127.0.0.1:2000")
-eixt

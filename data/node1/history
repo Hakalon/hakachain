@@ -1,5 +1,0 @@
-admin.peers
-admin.nodeInfo
-admin.peers
-eth.getBlock(0)
-admin.peers

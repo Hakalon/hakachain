@@ -156,14 +156,14 @@ geth --datadir miner2/data init hakachain.json
 use command below to start the console of each node.
 
 ```=bash
-geth --datadir ./data/node1 --networkid 111 --port 2000 console  
-geth --datadir ./data/node2 --networkid 111 --port 2001 console  
-geth --datadir ./data/miner1 --networkid 111 --port 2000 console  
-geth --datadir ./data/miner2 --networkid 111 --port 2000 console
+geth --datadir ./node1/data --networkid 111 --port 2000 console  
+geth --datadir ./node2/data --networkid 111 --port 2001 console  
+geth --datadir ./miner1/data --networkid 111 --port 2002 console  
+geth --datadir ./miner2/data --networkid 111 --port 2003 console
 
-//if you are using windows like me, you sholud put --ipcdisable in command when you open more than 2 console the same time.
+//if you are using windows like me, you sholud put --ipcdisable in command when you open more than 2 console on the same time.
 
-// geth --ipcdisable --datadir ./data/node2 --networkid 111 --port 2001 console
+// geth --ipcdisable --datadir ./node2/data --networkid 111 --port 2001 console
 
 ```
 
@@ -182,6 +182,51 @@ admin.addPeer("enode://36f004ed99bcfcf0836afd734f2565a0daeb955ead2ffbbaced559410
 ```
 
 Now we can use **admin.peers** in node1 console to check peers list.
+
+```=bash
+// You should see something like this:
+> admin.peers
+[{
+    caps: ["eth/63"],
+    id: "175ff7dc4f253c2bafb807b09d00adf2ee9daf5b078b492e8e0f4dc712418a52cdea449d361cd326b54cc94f1e723c1a80a340dccb4760741c9fe90786de7637",
+    name: "Geth/v1.8.10-stable-eae63c51/windows-amd64/go1.10.2",    network: {
+      inbound: true,
+      localAddress: "127.0.0.1:2000",
+      remoteAddress: "127.0.0.1:60680",
+      static: false,
+      trusted: false
+    },    protocols: {      eth: {
+        difficulty: 17179869184,
+        head: "0xd4e56740f876aef8c010b86a40d5f56745a118d0906a34e69aec8c0db1cb8fa3",
+        version: 63
+      }
+    }
+}, {
+    ...
+}]
+```
+
+## Sending Transaction between nodes
+
+Use below command to check whether or not node1 and node2 has currency.
+(node 1 should have, but node2 shouldn't)
+
+```=bash
+// node1 console
+eth.getBalance(eth.accounts[0]).toString(10)
+// node2 console
+eth.getBalance(eth.accounts[0]).toString(10)
+```
+
+Before node1 sends Tx to node2, you should unlock node1, or you will get an error.
+
+```=bash
+admin.unlockAccount(eth.accounts[0])
+// Now it will ask you to enter the password of node1, I use node1@hakachain in sample for node1.
+...
+
+
+```
 
 [link](https://google.com)  
 
