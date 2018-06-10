@@ -16,3 +16,15 @@
 15:06:13.163779 db@open done T·68.2564ms
 15:06:34.323508 db@close closing
 15:06:34.343864 db@close done T·20.3569ms
+=============== Jun 10, 2018 (CST) ===============
+15:09:45.081276 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+15:09:45.082273 version@stat F·[1] S·50KiB[50KiB] Sc·[0.25]
+15:09:45.082273 db@open opening
+15:09:45.082273 journal@recovery F·1
+15:09:45.092245 journal@recovery recovering @3
+15:09:45.117046 memdb@flush created L0@5 N·2 S·239B "Dat..ion,v625":"Las..der,v626"
+15:09:45.126560 version@stat F·[2] S·51KiB[51KiB] Sc·[0.50]
+15:09:45.160840 db@janitor F·4 G·0
+15:09:45.161863 db@open done T·79.5893ms
+15:20:12.059745 db@close closing
+15:20:12.098552 db@close done T·38.8078ms

@@ -1,2 +1,11 @@
 eth.account
 eth.accounts
+admin.nodeInfo
+admin.peers
+eth.getBalance(eth.accounts[0]).toString(10)
+admin.unlockAccount(eth.accounts[0])
+admin.txpools
+txpools
+txpool
+eth.sendTransaction({from:"1d8745ae5d1c759e5da9655f18143c0c87d9005a", to:"c202a7b62222aa27bd4bbf4d5062cc68d5578ca3", value: web3.toWei(0.05, "ether")})
+txpool

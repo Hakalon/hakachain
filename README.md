@@ -178,7 +178,7 @@ Use below command in node2, miner1 and miner2 console to add node1 as peer.
 ```=bash
 // The formation is " enode:// [ID] @ [IP] : [port] "
 // Use "admin.nodeInfo" to find node's ID
-admin.addPeer("enode://36f004ed99bcfcf0836afd734f2565a0daeb955ead2ffbbaced559410e99d205b90110ba883c127e2c15e2879adb9fa1b80a7f520e1e5f4e31be520fed7bf328@127.0.0.1:2000")
+admin.addPeer("enode://4ddc9ef3a5265a05672f6266a7bedb252c554ef1e7c83976defe52f4e75f5ed36e094568b505482a488ad53d63dc29230071c614131f88150802b3533584d507@127.0.0.1:2000")
 ```
 
 Now we can use **admin.peers** in node1 console to check peers list.
@@ -218,15 +218,59 @@ eth.getBalance(eth.accounts[0]).toString(10)
 eth.getBalance(eth.accounts[0]).toString(10)
 ```
 
-Before node1 sends Tx to node2, you should unlock node1, or you will get an error.
+Before node1 sends Tx to node2, you should **unlock node1**, or you will get an error.
 
 ```=bash
-admin.unlockAccount(eth.accounts[0])
+personal.unlockAccount(eth.accounts[0])
 // Now it will ask you to enter the password of node1, I use node1@hakachain in sample for node1.
 ...
 
-
+// Now you can use command below to transfer some currency from node1 to node2.
+eth.sendTransaction({from:"1d8745ae5d1c759e5da9655f18143c0c87d9005a", to:"c202a7b62222aa27bd4bbf4d5062cc68d5578ca3", value: web3.toWei(0.05, "ether")})
 ```
+
+If there is nothing wrong, you can see such information on your CLI:
+```=bash
+INFO [06-10|15:14:52] Submitted transaction                    fullhash=0x79b6291e2a783466014ffe7d61a4138a70522adb19704649a2d41c955435dd75 recipient=0xC202a7B62222AA27bD4BBf4d5062Cc68D5578cA3
+"0x79b6291e2a783466014ffe7d61a4138a70522adb19704649a2d41c955435dd75"
+```
+
+However, This transaction is still pending, because there is no miner to mine.
+
+Use command below to check the transaction pool.
+
+```=bash
+txpool
+
+// then you may see something like this:
+> txpool
+{
+  content: {
+    pending: {      0x1D8745aE5d1C759E5Da9655f18143c0c87d9005a: {        0: {...}
+      }
+    },
+    queued: {}
+  },
+  inspect: {
+    pending: {
+      0x1D8745aE5d1C759E5Da9655f18143c0c87d9005a: {
+        0: "0xC202a7B62222AA27bD4BBf4d5062Cc68D5578cA3: 50000000000000000 wei + 90000 gas × 18000000000 wei"
+      }
+    },
+    queued: {}  },
+  status: {
+    pending: 1,
+    queued: 0
+  },
+  getContent: function(callback),
+  getInspect: function(callback),
+  getStatus: function(callback)
+}
+```
+
+## Start Mining
+
+
 
 [link](https://google.com)  
 
