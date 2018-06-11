@@ -231,13 +231,14 @@ eth.sendTransaction({from:"1d8745ae5d1c759e5da9655f18143c0c87d9005a", to:"c202a7
 
 If there is nothing wrong, you can see such information on your CLI:
 ```=bash
-INFO [06-10|15:14:52] Submitted transaction                    fullhash=0x79b6291e2a783466014ffe7d61a4138a70522adb19704649a2d41c955435dd75 recipient=0xC202a7B62222AA27bD4BBf4d5062Cc68D5578cA3
+INFO [06-10|15:14:52] Submitted transaction
+fullhash=0x79b6291e2a783466014ffe7d61a4138a70522adb19704649a2d41c955435dd75 recipient=0xC202a7B62222AA27bD4BBf4d5062Cc68D5578cA3
 "0x79b6291e2a783466014ffe7d61a4138a70522adb19704649a2d41c955435dd75"
 ```
 
-However, This transaction is still pending, because there is no miner to mine.
+However, This transaction is still pending, because miner haven't mined yet.
 
-Use command below to check the transaction pool.
+Use command below to check the transaction pool, and you can see there is one Tx on pending.
 
 ```=bash
 txpool
@@ -269,6 +270,25 @@ txpool
 ```
 
 ## Start Mining
+
+Now we swich to **miner1 console**, and use command below to start mining.
+
+```=bash
+miner.start()
+```
+
+By default, this will keep mining **empty block**, even though there is no transaction at all.
+
+Miner1 console will continually show the mining information, and send the mined block to node1.
+
+At the same time, node1 will broadcast to other peers(node2 and miner2), so their console also show sync information.
+
+If there is nothing wrong, you can use command below to check the balance in **node2 console**.
+
+```=bash
+eth.getBalance(eth.accounts[0]).toString(10)
+```
+
 
 
 
