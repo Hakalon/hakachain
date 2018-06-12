@@ -206,6 +206,26 @@ Now we can use **admin.peers** in node1 console to check peers list.
 }]
 ```
 
+## Start Mining
+
+Now we swich to **miner1 console**, and use command below to start mining.
+
+```=bash
+miner.start()
+```
+
+By default, this will keep mining **empty block**, even though there is no transaction at all.
+
+Miner1 console will continually show the mining information, and send the mined block to node1.
+
+At the same time, node1 will broadcast to other peers(node2 and miner2), so their console also show syncing information.
+
+**After miner mined some blocks, we should use below command to stop mining.**
+
+```=bash
+miner.stop()
+```
+
 ## Sending Transaction between nodes
 
 Use below command to check whether or not node1 and node2 has currency.
@@ -218,7 +238,7 @@ eth.getBalance(eth.accounts[0]).toString(10)
 eth.getBalance(eth.accounts[0]).toString(10)
 ```
 
-Before node1 sends Tx to node2, you should **unlock node1**, or you will get an error.
+Before node1 sends Transaction(Tx) to node2, you should **unlock node1**, or you will get an error.
 
 ```=bash
 personal.unlockAccount(eth.accounts[0])
@@ -236,7 +256,7 @@ fullhash=0x79b6291e2a783466014ffe7d61a4138a70522adb19704649a2d41c955435dd75 reci
 "0x79b6291e2a783466014ffe7d61a4138a70522adb19704649a2d41c955435dd75"
 ```
 
-However, This transaction is still pending, because miner haven't mined yet.
+However, This Tx is still pending, because miner just stopped mining.
 
 Use command below to check the transaction pool, and you can see there is one Tx on pending.
 
@@ -269,25 +289,22 @@ txpool
 }
 ```
 
-## Start Mining
-
-Now we swich to **miner1 console**, and use command below to start mining.
-
+Now we go back to **miner1 console**, and use command below to start mining again.
 ```=bash
 miner.start()
 ```
 
-By default, this will keep mining **empty block**, even though there is no transaction at all.
+Similarly, after miner mined some blocks, we should stop the mining.
 
-Miner1 console will continually show the mining information, and send the mined block to node1.
-
-At the same time, node1 will broadcast to other peers(node2 and miner2), so their console also show sync information.
-
-If there is nothing wrong, you can use command below to check the balance in **node2 console**.
-
+Now you can use command below to check whether or not the currency have been transfered to node2.
 ```=bash
+// on node2 console
 eth.getBalance(eth.accounts[0]).toString(10)
 ```
+
+## Troubleshooting
+
+* Tx doesn't been broadcasted to other nodes.
 
 
 

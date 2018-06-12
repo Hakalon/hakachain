@@ -9,3 +9,17 @@ txpools
 txpool
 eth.sendTransaction({from:"1d8745ae5d1c759e5da9655f18143c0c87d9005a", to:"c202a7b62222aa27bd4bbf4d5062cc68d5578ca3", value: web3.toWei(0.05, "ether")})
 txpool
+eth.blockNumber
+txpool.
+txpool
+eth.blockNumber
+admin.peers
+admin.peers.length
+eth.blockNumber
+eth.getBalance(eth.accounts[0])
+eth.getBalance(eth.accounts[0]).toString(19)
+eth.getBalance(eth.accounts[0]).toString(10)
+eth.sendTransaction({from:"1d8745ae5d1c759e5da9655f18143c0c87d9005a", to:"c202a7b62222aa27bd4bbf4d5062cc68d5578ca3", value: web3.toWei(0.05, "ether")})
+txpool
+eth.getBalance(eth.accounts[0]).toString(10)
+exot

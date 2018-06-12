@@ -1,3 +1,17 @@
 exot
 admin.addPeer("enode://4ddc9ef3a5265a05672f6266a7bedb252c554ef1e7c83976defe52f4e75f5ed36e094568b505482a488ad53d63dc29230071c614131f88150802b3533584d507@127.0.0.1:2000")
 eth.getBalance(eth.accounts[0]).toString(10)
+eth.blockNumber
+txpool
+admin.addPeer("enode://2508420a310ddf41ce0ac196f1408355ceeda57c99e46ade3594bcc3bf9d3e85e53a0d01b1f95afd07e4fab02c4f748dcb255eef92d7131a7c9be38146875f4a@127.0.0.1:2003")
+admin.removePeer("enode://2508420a310ddf41ce0ac196f1408355ceeda57c99e46ade3594bcc3bf9d3e85e53a0d01b1f95afd07e4fab02c4f748dcb255eef92d7131a7c9be38146875f4a@127.0.0.1:2003")
+admin.addPeer("enode://4ddc9ef3a5265a05672f6266a7bedb252c554ef1e7c83976defe52f4e75f5ed36e094568b505482a488ad53d63dc29230071c614131f88150802b3533584d507@127.0.0.1:2000")
+eth.blockNumber
+eth.getBalance(eth.accounts[0])
+eth.nodeI
+admin.nodeInfo
+eth.accounts
+eth.getBalance(eth.accounts[0])
+txpool
+eth.blockNumber
+eth.getBalance(eth.accounts[0])
