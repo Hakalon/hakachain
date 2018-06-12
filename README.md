@@ -304,21 +304,55 @@ eth.getBalance(eth.accounts[0]).toString(10)
 
 ## Troubleshooting
 
-* Tx doesn't been broadcasted to other nodes.
+### Tx doesn't been broadcasted to other nodes.
 
+This problem will **make your Txpool stuck**, and **no Tx can be included into a block**.
 
+In sample, we use node1 to send Tx, but somehow node1 won't broadcast Tx to other nodes.
 
+So you **only see the Tx is pending on node1 console**, and other nodes' console just show you there is no Tx in Txpool.
 
-[link](https://google.com)  
+**How to fix:**
 
-[Anchor](#description)
+First you should delete the **transactions.rlp** file inside each node's data/geth folder like:  
+*hakachain/node1/data/geth/transactions.rlp*   *hakachain/node2/data/geth/transactions.rlp*  
+*hakachain/miner1/data/geth/transactions.rlp*  
+*hakachain/miner2/data/geth/transactions.rlp*  
 
-*Italic*  
+Second, when you are going to send Tx, make sure that **miner's peers including the Tx sender**.
 
-**Strong**
+Also you should **make some blocks before sending Tx**, because making empty block will let your nodes be synced.
 
-# Chapter
+That's why the step of Sending Transaction between nodes behind the step of Start Mining.
+
+You can use command below to make sure peers and be synced or not.
 
 ```=bash
-Code or Command ...
+// peers
+  admin.peers
+  //or
+  admin.peers.length
+
+// Sync
+  eth.syncing
+  // return "False", if it has already synced.
+  // if not, it will show something like:
+    {
+      currentBlock: 14,
+      highestBlock: 19,
+      knownStates: 0,
+      pulledStates: 0,
+      startingBlock: 14
+    }
+  
+  eth.blockNumber
+  // if sender and miner have the same number,
+  // then they are synced.
 ```
+
+There are some post or questions related to this problem.
+
+* [Geth not broadcasting transactions and not mining pending transactions on private network](https://github.com/ethereum/go-ethereum/issues/3694)
+* [Geth - How to clear queued transactions?](https://ethereum.stackexchange.com/questions/1774/geth-how-to-clear-queued-transactions)
+* [Transaction created by non-miner node is not mined](https://github.com/ethereum/go-ethereum/issues/15388)
+* [Transaction propagation issue on private test net since geth 1.4.6](https://github.com/ethereum/go-ethereum/issues/2769)
